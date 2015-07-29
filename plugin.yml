@@ -1,0 +1,7 @@
+name: Howler
+main: com.skylarostler.howler.Howler
+version: 1.0
+commands:
+    howl:
+        description: Howl :3
+        usage: /<command>
