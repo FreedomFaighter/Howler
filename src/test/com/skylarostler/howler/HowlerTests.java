@@ -1,8 +1,12 @@
 package com.skylarostler.howler;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
+
+import java.beans.Transient;
+
 import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.Test;
 import org.bukkit.plugin.java.JavaPluginLoader;
@@ -15,6 +19,14 @@ public class HowlerTests {
     Command falseCommand = mock(Command.class);
     CommandSender falseCommandSender = mock(CommandSender.class);
     Howler howler = mock(Howler.class);
+
+    @Test
+    public void classesAreInstanceOf()
+    {
+        assertTrue(falseCommand instanceof Command);
+        assertTrue(falseCommandSender instanceof CommandSender);
+        assertTrue(howler instanceof Howler);
+    }
 
     @Test
     public void onCommandFalseHowler()
