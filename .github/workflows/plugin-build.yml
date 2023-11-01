@@ -1,7 +1,11 @@
 name:  Howler Plugin
 
-on: push
-
+on: 
+  push:
+      branches-ignore:
+      - 'master'
+  pull_request:
+    branches: [ master ]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
