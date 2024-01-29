@@ -28,4 +28,3 @@ jobs:
       run: mvn -B package --file pom.xml -DjavaVersion=${{ matrix.java }}
     - name: Test with Maven
       run: mvn -B test --file pom.xml -DjavaVersion=${{ matrix.java }}
-      
