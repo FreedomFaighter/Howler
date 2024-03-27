@@ -1,14 +1,18 @@
 name:  Howler Plugin
 
-on: push
-
+on: 
+  push:
+      branches-ignore:
+      - 'master'
+  pull_request:
+    branches: [ master ]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         distribution: [ 'zulu', 'temurin' ]
-        java: [ '8', '11' ]
+        java: [ '11', '17' ]
         os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
     steps:
     - uses: actions/checkout@v3
@@ -21,4 +25,6 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -Djava_version=${{ matrix.java }}
+      run: mvn -B package --file pom.xml -DjavaVersion=${{ matrix.java }}
+    - name: Test with Maven
+      run: mvn -B test --file pom.xml -DjavaVersion=${{ matrix.java }}
